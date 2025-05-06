@@ -1,0 +1,19 @@
+<nav>
+    <ul>
+        {{#if user}}
+            <li><a href="/?auth=false" class="logout-button">Выйти</a></li>
+        {{else}}
+            <li class="auth-buttons">
+                <a href="/user" class="login-button">Войти</a>
+                <a href="/register" class="register-button">Зарегистрироваться</a>
+            </li>
+        {{/if}}
+        <li><a href="/reviews">Отзывы</a></li>
+        <li><a href="/#about-us">О нас</a></li>
+        <li><a href="/product">Каталог</a></li>
+        <li><a href="/"><img src="/MusicHall.svg" alt="Логотип"></a></li>
+        <li><a href="/contacts">Контакты</a></li>
+        <li><a href="/cooperation">Сотрудничество</a></li>
+        <li><a href="/bonus">Бонусная система</a></li>
+    </ul>
+</nav>

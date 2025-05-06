@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отзывы</title>
+    <link rel="stylesheet" href="/css/comments.css">
+    <link rel="stylesheet" href="/css/footer.css">
+
+    {{> scripts}}
+</head>
+<body>
+
+
+<main>
+    <h1>Отзывы
+         {{productName}} </h1>
+
+    <div id="comments-container" class="comments-container">
+        {{#each reviews}}
+            <div class="review-item" id="product-{{productId}}">
+                <div class="review-header">
+                    <span class="reviewer-name">{{name}}</span>
+                    <span class="review-rating">
+                        <span class="rating-text">Оценка: {{rating}}</span>
+                        <img src="/Star 1.png" alt="Star" class="rating-star">
+                    </span>
+                </div>
+                <p class="review-text">{{text}}</p>
+                <p class="product-info"><strong>Товар:</strong> <a href="/product/{{productId}}" class="product-link">{{productName}}</a></p>
+                <a href="/reviews/{{id}}" class="view-review">Подробнее</a>
+            </div>
+        {{/each}}
+
+    </div>
+
+    <form id="comment-form" class="comment-form" method="POST" action="/reviews">
+        <label> <br> Оставить отзыв на {{productName}} <br></label>
+        <input type="hidden" name="productId" value="{{productId}}">
+
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="text">Отзыв:</label>
+        <textarea id="text" name="text" rows="4" required></textarea>
+
+        <label for="rating">Оценка (1-5):</label>
+        <input type="number" id="rating" name="rating" min="1" max="5" required>
+
+        <!-- Не запрашиваем productId вручную -->
+        <label for="userId">ID пользователя (если есть):</label>
+        <input type="number" id="userId" name="userId">
+
+        <button type="submit">Отправить</button>
+    </form>
+</main>
+
+
+</body>
+</html>

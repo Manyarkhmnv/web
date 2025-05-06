@@ -1,0 +1,153 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Bonus {
+  id: ID!
+  points: Float!
+  status: String!
+  userId: ID!
+}
+
+input CreateProductInput {
+  description: String!
+  name: String!
+  price: Float!
+}
+
+input CreateReviewInput {
+  email: String!
+  name: String!
+  productId: Float!
+  rating: Float!
+  text: String!
+  userId: Float
+}
+
+input CreateTestdriveInput {
+  comments: String
+  date: String!
+  email: String
+  instrumentType: String!
+  name: String!
+  phone: String!
+  time: String!
+  userId: Float
+}
+
+input CreateUserInput {
+  bonusPoints: Float
+  bonusStatus: String
+  email: String!
+  firstName: String!
+  lastName: String!
+  phone: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Mutation {
+  createProduct(input: CreateProductInput!): Product!
+  createReview(input: CreateReviewInput!): Review!
+  createTestdrive(input: CreateTestdriveInput!): Testdrive!
+  createUser(input: CreateUserInput!): User!
+  deleteProduct(id: ID!): Product!
+  deleteReview(id: ID!): Review!
+  deleteTestdrive(id: ID!): Testdrive!
+  deleteUser(id: ID!): User!
+  updateProduct(id: ID!, input: UpdateProductInput!): Product!
+  updateReview(id: ID!, input: UpdateReviewInput!): Review!
+  updateTestdrive(id: ID!, input: UpdateTestdriveInput!): Testdrive!
+  updateUser(id: ID!, input: UpdateUserInput!): User!
+}
+
+type Product {
+  description: String!
+  id: ID!
+  name: String!
+  price: Float!
+}
+
+type Query {
+  product(id: ID!): Product
+  products: [Product!]!
+  review(id: ID!): Review
+  reviews: [Review!]!
+  reviewsByProduct(productId: ID!): [Review!]!
+  testdrive(id: ID!): Testdrive
+  testdrives: [Testdrive!]!
+  user(id: ID!): User
+  users: [User!]!
+}
+
+type Review {
+  email: String!
+  id: ID!
+  name: String!
+  product: Product
+  productId: ID!
+  rating: Float!
+  text: String!
+  userId: ID
+}
+
+type Testdrive {
+  comments: String
+  date: DateTime!
+  email: String
+  id: ID!
+  instrumentType: String!
+  name: String!
+  phone: String!
+  time: String!
+  user: User
+  userId: ID
+}
+
+input UpdateProductInput {
+  description: String
+  name: String
+  price: Float
+}
+
+input UpdateReviewInput {
+  email: String!
+  name: String!
+  productId: Float!
+  rating: Float!
+  text: String!
+  userId: Float
+}
+
+input UpdateTestdriveInput {
+  comments: String
+  date: String
+  email: String
+  instrumentType: String
+  name: String
+  phone: String
+  time: String
+  userId: Float
+}
+
+input UpdateUserInput {
+  bonusPoints: Float
+  bonusStatus: String
+  email: String
+  firstName: String
+  lastName: String
+  phone: String
+}
+
+type User {
+  bonus: Bonus
+  bonusId: ID!
+  email: String!
+  firstName: String!
+  id: ID!
+  lastName: String!
+  phone: String!
+}

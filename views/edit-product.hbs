@@ -1,0 +1,43 @@
+<div class="container mt-4">
+    <h1>Редактировать товар</h1>
+    <form action="/product/{{product.id}}" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="name" class="form-label">Название</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{product.name}}" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Описание</label>
+            <textarea class="form-control" id="description" name="description" rows="3" required>{{product.description}}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Цена</label>
+            <input type="number" class="form-control" id="price" name="price" step="0.01" value="{{product.price}}" required>
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">Изображение</label>
+            {{#if product.imageUrl}}
+                <div class="mb-2 image-container">
+                    <img src="{{product.imageUrl}}" alt="{{product.name}}" class="product-image">
+                </div>
+            {{/if}}
+            <input type="file" class="form-control" id="image" name="image" accept="image/*">
+            <div class="form-text">Оставьте пустым, если не хотите менять изображение</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+</div>
+
+<style>
+    .product-image {
+        width: 50%;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+        max-width: 500px;
+    }
+    .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="css/catalog.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+
+    {{> scripts}}
+</head>
+<body>
+
+<main>
+    <section>
+        <h1 class="page-title">Каталог товаров</h1>
+        <p class="description">Здесь вы найдете полный список наших товаров.</p>
+        <a href="/product/create" class="add-product-button">Добавить товар</a>
+    </section>
+
+    <section class="catalog swiper-container">
+        <div class="swiper-wrapper">
+            {{#each products}}
+                <div class="swiper-slide card" id="product-{{id}}">
+                    {{#if imageUrl}}
+                        <img src="{{imageUrl}}" alt="{{name}}" class="card-image">
+                    {{else}}
+                        <div class="no-image-placeholder">
+                            <p>Нет изображения</p>
+                        </div>
+                    {{/if}}
+                    <h2 class="card-title">{{name}}</h2>
+                    <p class="card-description">{{description}}</p>
+                    <p class="card-price">Цена: {{price}} ₽</p>
+
+                    <div class="button-group">
+                        <a href="/product/{{id}}" class="card-button">Подробнее</a>
+                        <a href="/product/{{id}}/edit" class="card-button">Редактировать</a>
+                        <a href="/reviews/product/{{id}}" class="card-button">Отзывы</a>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </section>
+</main>
+
+<script>
+    const swiper = new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
+            },
+        },
+    });
+
+    const eventSource = new EventSource('/product/events');
+
+    eventSource.onmessage = function(event) {
+        const message = JSON.parse(event.data);
+        console.log('SSE message:', message);
+
+        const type = message.type;
+        if (type === 'create') {
+            const product = message.product;
+            const catalog = document.querySelector('.swiper-wrapper');
+
+            const card = document.createElement('div');
+            card.classList.add('swiper-slide', 'card');
+            card.id = `product-${product.id}`;
+            card.innerHTML = `
+                <img src="${product.imageUrl || ''}" alt="${product.name}" class="card-image">
+                <h2 class="card-title">${product.name}</h2>
+                <p class="card-description">${product.description}</p>
+                <p class="card-price">Цена: ${product.price} ₽</p>
+                <div class="button-group">
+                    <a href="/product/${product.id}" class="card-button">Подробнее</a>
+                    <a href="/product/${product.id}/edit" class="card-button">Редактировать</a>
+                    <a href="/reviews/product/${product.id}" class="card-button">Отзывы</a>
+                </div>
+            `;
+            catalog.appendChild(card);
+        }
+    };
+
+    eventSource.onerror = function(err) {
+        console.error('SSE error:', err);
+        eventSource.close();
+    };
+</script>
+
+</body>
+</html>

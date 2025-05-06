@@ -1,0 +1,46 @@
+{{!< main}}
+
+<div class="container">
+    <main class="user-details">
+        <h1>Редактировать пользователя</h1>
+        <div class="user-info">
+            <p><strong>Текущие данные:</strong> {{user.firstName}} {{user.lastName}}</p>
+        </div>
+
+        <form class="user-edit-form" action="/user/{{user.id}}" method="POST">
+            <div class="form-group">
+                <label>Имя:</label>
+                <input type="text" name="firstName" value="{{user.firstName}}" />
+            </div>
+            <div class="form-group">
+                <label>Фамилия:</label>
+                <input type="text" name="lastName" value="{{user.lastName}}" />
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" name="email" value="{{user.email}}" />
+            </div>
+            <div class="form-group">
+                <label>Телефон:</label>
+                <input type="tel" name="phone" value="{{user.phone}}" />
+            </div>
+            <div class="form-group">
+                <label>Бонусы:</label>
+                <input type="number" name="bonusPoints" value="{{bonus.points}}" />
+            </div>
+            <div class="form-group">
+                <label>Статус:</label>
+                <select name="bonusStatus">
+                    <option value="bronze" {{#ifEquals bonus.status "bronze"}}selected{{/ifEquals}}>Бронзовый</option>
+                    <option value="silver" {{#ifEquals bonus.status "silver"}}selected{{/ifEquals}}>Серебряный</option>
+                    <option value="gold" {{#ifEquals bonus.status "gold"}}selected{{/ifEquals}}>Золотой</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+        </form>
+
+        <div class="navigation">
+            <a href="/user/{{user.id}}" class="btn btn-back">Назад</a>
+        </div>
+    </main>
+</div>

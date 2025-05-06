@@ -1,0 +1,65 @@
+<section class="product-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 image-container">
+                {{#if product.imageUrl}}
+                    <img src="{{product.imageUrl}}" alt="{{product.name}}" class="product-image">
+                {{else}}
+                    <div class="no-image-placeholder">
+                        <p>Нет изображения</p>
+                    </div>
+                {{/if}}
+            </div>
+            <div class="col-md-6">
+                <h1 class="page-title">{{product.name}}</h1>
+                <p class="description">{{product.description}}</p>
+                <p class="price">Цена: {{product.price}} ₽</p>
+                
+                <div class="button-group">
+                    <a href="/product/{{product.id}}/edit" class="card-button">Редактировать</a>
+                    <a href="/reviews/product/{{product.id}}" class="card-button">Отзывы</a>
+                    <a href="/product" class="card-button">Назад к каталогу</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const swiper = new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
+            },
+        },
+    });
+</script>
+
+<style>
+    .product-image {
+        width: 50%;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+        max-width: 500px;
+    }
+    .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{review.name}}</title>
+    <link rel="stylesheet" href="/css/comments.css">
+    <link rel="stylesheet" href="/css/footer.css">
+
+    {{> scripts}}
+</head>
+<body>
+
+
+<main>
+    <div class="review-card">
+        <h1>
+            {{review.name}}
+            <img src="/Star 1.png" alt="Image" style="height: 20px; width: auto; margin-right: 10px;">
+            {{review.rating}}
+        </h1>
+        <p>{{review.text}}</p>
+        <p><strong>Дата создания:</strong> {{review.createdAt}}</p>
+
+        <div class="button-group">
+            <a href="/reviews/{{review.id}}/edit" class="card-button">Редактировать</a>
+
+            <form action="/reviews/{{review.id}}" method="POST" onsubmit="return confirm('Удалить отзыв?')" style="display: inline;">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="card-button">Удалить</button>
+            </form>
+            <p><strong>Продукт:</strong> <a href="/product/{{review.productId}}">{{review.productName}}</a></p>
+
+            <a href="/reviews" class="card-button">Назад к отзывам</a>
+        </div>
+    </div>
+</main>
+
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запись на тестирование инструментов</title>
+    <link rel="stylesheet" href="css/test-form.css">
+    <link rel="stylesheet" href="/css/footer.css">
+
+</head>
+
+<body>
+
+
+<main>
+    <h1>Запись на тестирование музыкальных инструментов</h1>
+    <form id="test-form">
+        <label for="instrumentType">Тип инструмента:</label>
+        <select id="instrumentType" name="instrumentType" required>
+            <option value="Гитара">Гитара</option>
+            <option value="Пианино">Пианино</option>
+            <option value="Барабан">Барабан</option>
+            <option value="Синтезатор">Синтезатор</option>
+        </select>
+
+        <label for="test-date">Дата:</label>
+        <input type="date" id="test-date" name="test-date" required>
+
+        <label for="test-time">Время:</label>
+        <input type="time" id="test-time" name="test-time" required> <!-- Новое поле для времени -->
+
+        <label for="name">Ваше имя:</label>
+        <input type="text" id="name" name="name" placeholder="Иван Иванов" required>
+
+        <label for="phone">Телефон:</label>
+        <input type="tel" id="phone" name="phone" placeholder="+7 900 000-00-00" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+
+        <label for="comments">Дополнительные комментарии:</label>
+        <textarea id="comments" name="comments" rows="4" placeholder="Ваши пожелания..."></textarea>
+
+        <button type="submit" id="create-button">Создать запись</button>
+        <button type="button" id="edit-button" style="display:none;">Сохранить изменения</button>
+    </form>
+
+
+
+    <h2>Список записей</h2>
+    <div id="entries-container">
+        <div class="entries-list">
+            {{#each testDrives}}
+            <div class="entry-card">
+                <div class="entry-header">
+                    <h3>{{this.instrumentType}}</h3>
+                    <span class="entry-date">{{this.testDate}}</span>
+                </div>
+                <div class="entry-details">
+                    <p><strong>Время:</strong> {{this.testTime}}</p>
+                    <p><strong>Имя:</strong> {{this.name}}</p>
+                    <p><strong>Телефон:</strong> {{this.phone}}</p>
+                    <p><strong>Email:</strong> {{this.email}}</p>
+                    {{#if this.comments}}
+                    <p><strong>Комментарии:</strong> {{this.comments}}</p>
+                    {{/if}}
+                </div>
+                <div class="entry-actions">
+                    <button class="edit-entry" data-id="{{this._id}}">Редактировать</button>
+                    <button class="delete-entry" data-id="{{this._id}}">Удалить</button>
+                </div>
+            </div>
+            {{else}}
+            <p>Записей пока нет.</p>
+            {{/each}}
+        </div>
+    </div>
+</main>
+
+<script src="/scripts/test-form.js" defer></script>
+
+
+</body>
+
+</html>

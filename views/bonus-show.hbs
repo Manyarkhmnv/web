@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Бонусная карта</title>
+    <link rel="stylesheet" href="/css/user.css">
+</head>
+<body>
+<main>
+    <h1>Бонусная карта пользователя: {{bonus.user.firstName}} {{bonus.user.lastName}}</h1>
+    <p>Баланс: {{bonus.points}} баллов</p>
+    <p>Статус: {{bonus.status}}</p>
+
+    <form action="/bonus/{{bonus.id}}?_method=PATCH" method="POST">
+        <label>Обновить баллы: <input type="number" name="points" value="{{bonus.points}}" /></label>
+        <label>Статус:
+            <select name="status">
+                <option value="bronze" {{#ifEquals bonus.status "bronze"}}selected{{/ifEquals}}>Бронзовый</option>
+                <option value="silver" {{#ifEquals bonus.status "silver"}}selected{{/ifEquals}}>Серебряный</option>
+                <option value="gold" {{#ifEquals bonus.status "gold"}}selected{{/ifEquals}}>Золотой</option>
+            </select>
+        </label>
+        <button type="submit">Сохранить</button>
+    </form>
+
+    <a href="/user/{{bonus.user.id}}">Назад к профилю</a>
+</main>
+</body>
+</html>

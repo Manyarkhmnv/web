@@ -1,0 +1,32 @@
+<main class="container">
+    <h1>Список пользователей</h1>
+    <a href="/user/new" class="button add-button">Добавить пользователя</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Email</th>
+                <th>Телефон</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each users}}
+                <tr>
+                    <td>{{this.firstName}}</td>
+                    <td>{{this.lastName}}</td>
+                    <td>{{this.email}}</td>
+                    <td>{{this.phone}}</td>
+                    <td class="action-cell">
+                        <a href="/user/{{this.id}}" class="button action-button">Подробнее</a>
+                        <a href="/user/{{this.id}}/edit" class="button action-button">Редактировать</a>
+                        <form action="/user/{{this.id}}?_method=DELETE" method="POST" style="display:inline;">
+                            <button type="submit" class="button delete-button">Удалить</button>
+                        </form>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</main>

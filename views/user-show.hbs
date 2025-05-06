@@ -1,0 +1,36 @@
+{{!< main}}
+
+<div class="container">
+    <main class="user-details">
+        <h1>Пользователь: {{user.firstName}} {{user.lastName}}</h1>
+        <div class="user-info">
+            <p><strong>Email:</strong> {{user.email}}</p>
+            <p><strong>Телефон:</strong> {{user.phone}}</p>
+            <p><strong>Бонусы:</strong> {{user.bonus.points}} ({{user.bonus.status}})</p>
+        </div>
+
+        <form class="bonus-form" action="/bonus/{{user.bonus.id}}?_method=PATCH" method="POST">
+            <div class="form-group">
+                <label>Изменить бонусы:</label>
+                <input type="number" name="points" value="{{user.bonus.points}}" />
+            </div>
+            <div class="form-group">
+                <label>Статус:</label>
+                <select name="status">
+                    <option value="bronze" {{#ifEquals user.bonus.status "bronze"}}selected{{/ifEquals}}>Бронзовый</option>
+                    <option value="silver" {{#ifEquals user.bonus.status "silver"}}selected{{/ifEquals}}>Серебряный</option>
+                    <option value="gold" {{#ifEquals user.bonus.status "gold"}}selected{{/ifEquals}}>Золотой</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+        </form>
+
+        <form class="delete-form" action="/bonus/{{user.bonus.id}}?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-danger">Удалить бонус</button>
+        </form>
+
+        <div class="navigation">
+            <a href="/user" class="btn btn-back">Назад</a>
+        </div>
+    </main>
+</div>

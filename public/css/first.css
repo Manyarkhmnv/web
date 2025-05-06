@@ -1,0 +1,299 @@
+@font-face {
+    font-family: 'FiraCode';
+    src: url('../FiraCode-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SantEliaScript';
+    src: url('../SantEliaScriptBoldDEMO.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+h1 {
+    font-family: 'SantEliaScript', bold;
+    color: #35A6D7;
+}
+.gor_line {
+    position: absolute;
+    left: 78px;
+    top: 210px;
+}
+.vert_line {
+    position: absolute;
+    left: 77px;
+    top: 250px;
+}
+.logow {
+    position: absolute;
+    left: 420px;
+    top: 120px;
+    width: 254px;
+    height: 64px;
+}
+.type {
+    position: absolute;
+    left: 740px;
+    top: 402px;
+}
+.clef {
+    position: absolute;
+    left: 20px;
+    top: 176px;
+    z-index: 1;
+}
+.lines {
+    position: absolute;
+    left: 20px;
+    top: 220px;
+    z-index: 0;
+}
+.image1 {
+    position: absolute;
+    right: 35px;
+    top: 343px;
+    z-index: 3;
+}
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+}
+
+ul li a {
+    margin-left: 30px;
+    margin-right: 30px;
+    text-decoration: none;
+    color: #998C42;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 105px;
+    padding-top: 27px;
+    width: 100%;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'FiraCode-VariableFont_wght', regular;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F7EFE5;
+}
+.first {
+    position: relative;
+    height: 100vh;
+    order: 1;
+    background-color: #F7EFE5;
+}
+.second {
+    position: relative;
+    height: 100vh;
+    order: 2;
+    background-color: #35A6D7;
+    margin-top: 50px;
+}
+.titles {
+    position: absolute;
+    text-align: left;
+    top: 78px;
+    left: 97px;
+    font-size: 48px;
+    font-family: 'FiraCode-VariableFont_wght', regular;
+    font-weight: normal;
+    color: #F7EFE5;
+}
+h3 {
+    position: absolute;
+    text-align: left;
+    top: 180px;
+    left: 232px;
+    font-size: 48px;
+    line-height: 84px;
+    font-family: 'FiraCode-VariableFont_wght', bold;
+    color: black;
+}
+.pp {
+    position: absolute;
+    right: 270px;
+    top: 629px;
+    color: #35A6D7;
+    font-weight: bold;
+}
+.article {
+    position: absolute;
+    left: 98px;
+    top: 230px;
+    right: 400px;
+    color: #F7EFE5;
+}
+aside {
+    position: absolute;
+    left: 98px;
+    top: 330px;
+    right: 400px;
+    color: #F7EFE5;
+}
+.acii {
+    position: absolute;
+    top: 430px;
+    left: 98px;
+    color: #F7EFE5;
+}
+code {
+    position: absolute;
+    left: 150px;
+    top: 430px;
+    color: #F7EFE5;
+}
+.phrase {
+    position: absolute;
+    left: 98px;
+    top: 600px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    color: #F7EFE5;
+}
+table {
+    position: absolute;
+    width: 100%;
+    top: 700px;
+}
+th {
+    background-color: #F7EFE5;
+    color: black;
+    padding: 10px;
+    text-align: left;
+}
+td {
+    padding: 10px;
+}
+tr:nth-child(even) {
+    background-color: white;
+}
+tr:nth-child(odd) {
+    background-color: #35A6D7;
+}
+nav ul li a.active {
+    font-weight: bold;
+    text-decoration: underline;
+    color: #FFD700;
+}
+.catalog {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 30%;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.card-title {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+}
+
+.card-description {
+    font-size: 14px;
+    color: #666;
+    margin: 10px 0;
+}
+
+.card-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #35A6D7;
+    margin: 10px 0;
+}
+
+.card-button {
+    background-color: #35A6D7;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.card-button:hover {
+    background-color: #2b89a9;
+}
+
+nav ul li a.active {
+    font-weight: bold;
+    text-decoration: underline;
+    color: #FFD700;
+}
+
+.auth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.login-button,
+.register-button,
+.logout-button {
+    padding: 6px 12px;
+    background-color: #35A6D7;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.phrase-blue {
+    position: absolute;
+    right: 1120px;
+    top: 500px;
+    color: #35A6D7;
+
+}
+.session-info {
+}
+
+.processing-time {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 1000;
+}
+
+.processing-time p {
+    margin: 0;
+}
